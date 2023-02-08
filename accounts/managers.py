@@ -11,8 +11,8 @@ class UserManager(BaseUserManager):
             raise ValueError("Please provide a valid email")
         email = self.normalize_email(email)
         user = self.model(email, **extra_fields)
-        user.set(password)
-        user.save(self.db)
+        user.set_password(password)
+        user.save(using=self.db)
         return user
 
     def create_user(self, email, password=None, **extra_fields):

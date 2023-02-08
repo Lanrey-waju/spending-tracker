@@ -7,7 +7,7 @@ from .managers import UserManager
 # Create your models here.
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
-    email = models.EmailField(max_length=254, unique=True, verbose_name="email address")
+    email = models.EmailField(unique=True, verbose_name="email address")
     first_name = models.CharField(max_length=30, blank=True, verbose_name="first name")
     last_name = models.CharField(max_length=30, blank=True, verbose_name="last name")
     date_joimed = models.DateTimeField(auto_now_add=True, verbose_name="date joined")
@@ -17,7 +17,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["first name",]
+    REQUIRED_FIELDS = ["first_name",]
 
     # class Meta:
     #     verbose_name = _("user")
