@@ -3,14 +3,16 @@ from django.contrib.auth.base_user import BaseUserManager
 class UserManager(BaseUserManager):
     use_in_migrations = True
 
-    def _create_user(self, email, password, **extra_fields):
+    def _create_user(self, email, password, first_name, **extra_fields):
         """
         creates and saves a user with a given email and password
         """
         if not email:
             raise ValueError("Please provide a valid email")
+        if not first_name:
+            raise ValueError("Please provide a name")
         email = self.normalize_email(email)
-        user = self.model(email=email, **extra_fields)
+        user = self.model(email=email, first_name=first_name, **extra_fields)
         user.set_password(password)
         user.save(using=self.db)
         return user

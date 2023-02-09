@@ -23,6 +23,12 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     #     verbose_name = _("user")
     #     verbose_name_plural = _("users")
 
+    def __str__(self):
+        """
+        return a human readable string representative of the user
+        """
+        return self.first_name
+
     def get_short_name(self):
         """
         Return the first name of the user
