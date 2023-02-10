@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # Local
     "accounts.apps.AccountsConfig",
+    "tracker.apps.TrackerConfig",
 ]
 
 MIDDLEWARE = [
