@@ -12,7 +12,7 @@ class TrackerModelTests(TestCase):
     """
     def setUp(self):
         self.user = User.objects.create_user(email="user@user.com", first_name="user", password="foo")
-        self.income = Income.objects.create(amount=3.33, source="Salary")
+        self.income = Income.objects.create(amount=3.33, source="Salary", user=self.user)
 
     def test_string_representation(self):
         self.assertEqual(str(self.income), "3.33 from Salary")
