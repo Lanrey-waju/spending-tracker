@@ -1,7 +1,8 @@
 from django.test import TestCase
+from django.utils import timezone
 from django.contrib.auth import get_user_model
 
-from .models import Income
+from .models import Income, Expense
 
 User = get_user_model()
 
@@ -12,7 +13,9 @@ class TrackerModelTests(TestCase):
     """
     def setUp(self):
         self.user = User.objects.create_user(email="user@user.com", first_name="user", password="foo")
-        self.income = Income.objects.create(amount=3.33, source="Salary", user=self.user)
+        self.income = Income.objects.create(amount=3.33, source="Salary", user=self.user, date=timezone.now())
+        self.expense = Expense.objects.create(amount=2.00, date=timezone.now())
+
 
     def test_string_representation(self):
         self.assertEqual(str(self.income), "3.33 from Salary")
@@ -24,3 +27,9 @@ class TrackerModelTests(TestCase):
         # income = Income.objects.create(amount=3.33, source="Salary")
         self.assertEqual(self.income.amount, 3.33)
         self.assertEqual(self.income.source, "Salary")
+    
+    def test_expense_model(self):
+        self.assertEqual(self.expense.amount, 2.00)
+        self.assertEqual(self.expense.category, "OTHER")
+
+
