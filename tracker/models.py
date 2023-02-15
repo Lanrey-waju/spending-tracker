@@ -19,14 +19,35 @@ class Expense(models.Model):
     GROCERIES = "GROCERIES"
     RENT = "RENT"
     OTHER = 'OTHER'
+    UTILITIES = "UTILITIES"
+    TRANSPORTATION = "TRANSPORTATION"
+    CLOTHING = "CLOTHING"
+    VACATION = "VACATION"
+    GIFTS = "GIFTS"
+    MEDICAL = "MEDICAL"
+    INSURANCE = "INSURANCE"
+    EDUCATION = "EDUCATION"
+    SAVINGS = "SAVINGS"
+    MISCELLANEOUS = "MISCELLANEOUS"
+
     CATEGORIES = [
         (GROCERIES, "Grocery"),
         (RENT, "Rent"),
         (OTHER, "Other"),
+        (UTILITIES, "Utilities"),
+        {TRANSPORTATION, "Transportation"},
+        (CLOTHING, "Clothing"),
+        (VACATION, "Vacation"),
+        (GIFTS, "Gifts"),
+        (MEDICAL, "Medical"),
+        (INSURANCE, "Insurance"),
+        (EDUCATION, "Education"),
+        (SAVINGS, "Savings"),
+        (MISCELLANEOUS, "Miscellaneous"),
     ]
-    category = models.CharField(max_length=10, choices=CATEGORIES, default=OTHER)
+    category = models.CharField(max_length=15, choices=CATEGORIES, default=OTHER)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     date = models.DateField(auto_now=True)
 
     def __str__(self):
-        return f"{self.amount} om {self.category}"
+        return f"{self.amount} on {self.category}"

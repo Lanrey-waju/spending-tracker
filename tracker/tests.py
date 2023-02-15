@@ -19,6 +19,7 @@ class TrackerModelTests(TestCase):
 
     def test_string_representation(self):
         self.assertEqual(str(self.income), "3.33 from Salary")
+        self.assertEqual(str(self.expense), "2.0 on OTHER")
     
     def test_user_can_create_income_instance(self):
         self.assertEqual(self.income.user, self.user)
