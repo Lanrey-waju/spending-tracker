@@ -12,6 +12,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=30, blank=True, verbose_name="last name")
     date_joimed = models.DateTimeField(auto_now_add=True, verbose_name="date joined")
     is_active = models.BooleanField(default=True, verbose_name="active")
+    is_staff = models.BooleanField(default=False, verbose_name="staff")
 
     
     objects = UserManager()
